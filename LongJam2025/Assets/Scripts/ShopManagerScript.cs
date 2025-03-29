@@ -10,11 +10,13 @@ public class ShopManagerScript : MonoBehaviour
 {
     public int[,] shopItems = new int[13,13];
     public float points;
+    public float quantity;
     public TMP_Text PointsTxt;
+
     
     void Start()
     {
-       PointsTxt.text = "Pontos: " + points.ToString();
+       PointsTxt.text = points.ToString();
 
        shopItems[1,1] = 1;
        shopItems[1,2] = 2;
@@ -44,6 +46,11 @@ public class ShopManagerScript : MonoBehaviour
        shopItems[2,11] = 120;
        shopItems[2,12] = 130;
 
+       //Quantidade
+       for(int i=1;i<13;i++){
+        shopItems[3,i] = 0;
+       }
+
 
     }
 
@@ -55,7 +62,9 @@ public class ShopManagerScript : MonoBehaviour
 
         if (points >= shopItems[2,ButtonRef.GetComponent<ButtonInfo>().ItemId]){
             points -= shopItems[2,ButtonRef.GetComponent<ButtonInfo>().ItemId];
-             PointsTxt.text = "Pontos: " + points.ToString();
+           shopItems[3,ButtonRef.GetComponent<ButtonInfo>().ItemId] += 1 ;
+
+             PointsTxt.text = points.ToString();
              print("Item " + ButtonRef.GetComponent<ButtonInfo>().ItemId + " comprado com sucesso!" );
              
         }
