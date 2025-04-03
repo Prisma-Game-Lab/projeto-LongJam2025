@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoxScript : ObjectManager
+public class BoxScript : ObjectScript
 {
     [SerializeField] private GameObject item;
 

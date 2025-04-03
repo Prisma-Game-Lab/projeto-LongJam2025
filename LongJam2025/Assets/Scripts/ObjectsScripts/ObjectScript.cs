@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ObjectManager : MonoBehaviour
+public class ObjectScript : MonoBehaviour
 {
     public UnityEvent click;
     private void OnMouseDown()
