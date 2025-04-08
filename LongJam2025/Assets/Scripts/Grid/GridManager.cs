@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
 
 public class GridManager : MonoBehaviour
@@ -39,7 +40,27 @@ public class GridManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (temp != null) return;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (EventSystem.current.IsPointerOverGameObject(0))
+            {
+                return;
+            }
+
+            if (!temp.Placed)
+            {
+                Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector3Int cellPos = gridLayout.LocalToCell(mousePos);
+
+                if (prevPos != cellPos)
+                {
+                    temp.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos + new Vector3(.5f,.5f,0f));
+                    prevPos = cellPos;
+                }
+            }
+        }
     }
 
     private static TileBase[] GetTilesBlock(BoundsInt area, Tilemap tilemap)
@@ -73,5 +94,10 @@ public class GridManager : MonoBehaviour
         TileBase[] tiles = new TileBase[size];
         FillTiles(tiles, type);
         tilemap.SetTilesBlock(area, tiles);
+    }
+
+    public void InitializeMovel(GameObject movel)
+    {
+        temp = Instantiate(movel, Vector3.zero, Quaternion.identity).GetComponent<MovelManager>();
     }
 }

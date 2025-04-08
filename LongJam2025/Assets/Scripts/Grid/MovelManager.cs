@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MovelManager : MonoBehaviour
 {
+    public bool Placed { get; private set }
+    public BoundsInt area;
+
     // Start is called before the first frame update
     void Start()
     {
