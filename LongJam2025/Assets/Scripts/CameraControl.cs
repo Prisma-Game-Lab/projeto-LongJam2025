@@ -3,16 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraControl : MonoBehaviour
 {
     [SerializeField] private int larguraMax;
     [SerializeField] private int alturaMax;
-    [SerializeField] private float speed;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float zoomSpeed;
 
     private int largura;
     private int altura;
     private Vector2 mouse;
+    private float scroll;
 
     void Start()
     {
@@ -22,9 +25,22 @@ public class CameraControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        float deltaX = Mathf.Clamp(mouse.x - (largura / 2), -1, 1) * speed;
-        float deltaY = Mathf.Clamp((altura / 2) - mouse.y, -1, 1) * speed;
-        if (-400 < mouse.x - (largura /2 ) && mouse.x - (largura / 2) < 400)
+        cameraMovement();
+        cameraZoom();
+    }
+
+    void cameraZoom()
+    {
+        scroll = Mathf.Clamp(Input.mouseScrollDelta.y, -1, 1);
+        float zoom = Camera.main.orthographicSize + scroll * zoomSpeed;
+        Camera.main.orthographicSize = Mathf.Clamp(zoom, 1, 10);
+    }
+
+    void cameraMovement()
+    {
+        float deltaX = Mathf.Clamp(mouse.x - (largura / 2), -1, 1) * (moveSpeed - 0.01f * (1 /Camera.main.orthographicSize));
+        float deltaY = Mathf.Clamp((altura / 2) - mouse.y, -1, 1) * (moveSpeed - 0.01f * (1 / Camera.main.orthographicSize));
+        if (-400 < mouse.x - (largura / 2) && mouse.x - (largura / 2) < 400)
         {
             deltaX = 0;
         }
@@ -32,19 +48,13 @@ public class CameraControl : MonoBehaviour
         {
             deltaY = 0;
         }
-        cameraMovement(deltaX, deltaY);
-    }
-
-    void cameraMovement(float deltaX, float deltaY)
-    {
         float newX = Mathf.Clamp(deltaX + gameObject.transform.position.x, -10, 10);
         float newY = Mathf.Clamp(deltaY + gameObject.transform.position.y, -5, 5);
         gameObject.transform.position = new Vector3(newX, newY, gameObject.transform.position.z);
     }
 
-    private void OnGUI()
+    void OnGUI()
     {
         mouse = Event.current.mousePosition;
-        Debug.Log(mouse);
     }
 }
