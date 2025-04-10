@@ -38,6 +38,14 @@ public float Points
     private float holdThreshold = 1f;
     private bool isHolding = false;
 
+    public int tier1_price;
+
+    public int tier2_price;
+
+    public int base_pc;
+
+    public int pc_per_item;
+    public int tier3_price;
     private int number_of_items = 8;
     private GameObject buttonRef;
 
@@ -48,18 +56,18 @@ public float Points
     {
         Points = Points;
        
-        shopItems[1,1] = 50;
+        shopItems[1,1] = tier1_price;
         shopItems[3,1] = 1;
         for (int i = 1; i <= number_of_items; i++)
         {
             shopItems[0, i] = i;     // Item ID
             shopItems[2, i] = 0;
-            if (i < 4 && i>1){
-            shopItems[1,i] = 250;
+            if (i <= 4 && i>1){
+            shopItems[1,i] = tier2_price;
             shopItems[3,i] = 2;
             }
-            if (i >= 4){
-            shopItems[1,i] = 1250;
+            if (i > 4){
+            shopItems[1,i] = tier3_price;
             shopItems[3,i] = 3;
 
             }
@@ -75,7 +83,7 @@ void addPoints(){
         int total = 0;
         for (int i=1;i<=number_of_items;i++){
             if (shopItems[2,i] > 0){
-                total += 5 *5*shopItems[3,i] * shopItems[2,i];
+                total += base_pc * pc_per_item*shopItems[3,i] * shopItems[2,i];
             }
         }
         total_points += total;
