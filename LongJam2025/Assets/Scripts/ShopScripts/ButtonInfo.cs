@@ -16,7 +16,7 @@ public GameObject ShopManager;
     // Update is called once per frame
     void Update()
     {
-      PriceText.text = "$" + ShopManager.GetComponent<ShopManagerScript>().shopItems[2,ItemId].ToString();
-      QuantityText.text = ShopManager.GetComponent<ShopManagerScript>().shopItems[3,ItemId].ToString(); 
+      PriceText.text = "$" + ShopManager.GetComponent<ShopManagerScript>().shopItems[1,ItemId].ToString();
+      QuantityText.text = ShopManager.GetComponent<ShopManagerScript>().shopItems[2,ItemId].ToString(); 
     }
 }

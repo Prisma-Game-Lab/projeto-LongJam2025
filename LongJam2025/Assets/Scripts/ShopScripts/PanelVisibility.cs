@@ -35,7 +35,7 @@ public void Tier1(){
 }
 
 public void Tier2(){
-    if (ShopManager.GetComponent<ShopManagerScript>().points_spent >= 250){
+    if (ShopManager.GetComponent<ShopManagerScript>().total_points >= 1500){
     if (b == false){
         b = !b;
         a = false;
@@ -50,7 +50,7 @@ else{
 }
 }
 public void Tier3(){
-    if (ShopManager.GetComponent<ShopManagerScript>().points_spent >= 500){
+    if (ShopManager.GetComponent<ShopManagerScript>().total_points >= 45000){
     if (c == false){
         c = !c;
         a = false;
