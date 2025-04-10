@@ -2104,7 +2104,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 18306342}
   m_HandleRect: {fileID: 18306341}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2179,10 +2179,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _points: 250
   isVisible: 0
-  total_points: 0
+  total_points: 250
   tiers: 000000000000000000000000
   PointsTxt: {fileID: 1112557743}
   time: 0
+  tier1_price: 25
+  tier2_price: 225
+  base_pc: 1
+  pc_per_item: 5
+  tier3_price: 2025
   itemList:
   - {fileID: 6062465349919299471, guid: a8629eb7ab8d02345a9b9ab95d53493f, type: 3}
   gridManager: {fileID: 739797773}
