@@ -8,7 +8,8 @@ using UnityEngine.UI;
 public class ShopManagerScript : MonoBehaviour
 {
     public int[,] shopItems = new int[13, 13];
-    public float points;
+    public static float points = 0;
+    private int itemCount = 0;
 
     public bool isVisible = false;
 
@@ -21,12 +22,12 @@ public class ShopManagerScript : MonoBehaviour
     private float holdTime = 0f;
     private float holdThreshold = 1f;
     private bool isHolding = false;
-    private GameObject buttonRef; 
+    private GameObject buttonRef;
 
     void Start()
     {
         PointsTxt.text = points.ToString();
-       
+
 
         // Initialize shop items
         for (int i = 1; i <= 12; i++)
@@ -35,30 +36,48 @@ public class ShopManagerScript : MonoBehaviour
             shopItems[2, i] = i * 10;  // Prices
             shopItems[3, i] = 0;       // Quantity
         }
-        for (int i=0;i<3;i++){
+        for (int i = 0; i < 3; i++)
+        {
             tiers[i] = 0;
         }
+        StartCoroutine(passivePoints());
     }
 
     void Update()
     {
-        if(points_spent >= 250){
+        PointsTxt.text = points.ToString();
+        if (points_spent + points >= 50)
+        {
             tiers[0] = 1;
-            if(points_spent >= 500){
+            if (GameManager.tier == 1)
+            {
+                GameManager.tier += 1;
+            }
+            if (points_spent + points >= 1500)
+            {
                 tiers[1] = 1;
-                if(points_spent >= 750){
+                if (GameManager.tier == 2)
+                {
+                    GameManager.tier += 1;
+                }
+                if (points_spent + points >= 45000)
+                {
                     tiers[2] = 1;
-        }  
+                    if (GameManager.tier == 3)
+                    {
+                        GameManager.tier += 1;
+                    }
+                }
+            }
         }
-        }
-        
+
         if (isHolding)
         {
             holdTime += Time.deltaTime;
             if (holdTime >= holdThreshold)
             {
-                if(isVisible == true)
-                MoveItem(); 
+                if (isVisible == true)
+                    MoveItem();
                 isHolding = false;
             }
         }
@@ -70,11 +89,11 @@ public class ShopManagerScript : MonoBehaviour
         isHolding = true;
         holdTime = 0f;
 
-        
+
         ScrollRect scrollRect = button.GetComponentInParent<ScrollRect>();
         if (scrollRect != null)
         {
-            
+
         }
     }
 
@@ -83,7 +102,7 @@ public class ShopManagerScript : MonoBehaviour
         if (holdTime < holdThreshold)
         {
             if (isVisible == true)
-            Buy(); 
+                Buy();
         }
         isHolding = false;
     }
@@ -100,6 +119,7 @@ public class ShopManagerScript : MonoBehaviour
             points_spent += shopItems[2, itemId];
             shopItems[3, itemId] += 1;
             PointsTxt.text = points.ToString();
+            itemCount++;
             Debug.Log("Item " + itemId + " comprado com sucesso!");
         }
         else
@@ -123,6 +143,15 @@ public class ShopManagerScript : MonoBehaviour
         else
         {
             Debug.Log("Você não tem esse item para mover!");
+        }
+    }
+
+    IEnumerator passivePoints()
+    {
+        while (true)
+        {
+            points += (5 * (itemCount * GameManager.tier));
+            yield return new WaitForSeconds(1);
         }
     }
 }

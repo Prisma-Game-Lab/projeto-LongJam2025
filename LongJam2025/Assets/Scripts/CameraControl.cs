@@ -33,7 +33,7 @@ public class CameraControl : MonoBehaviour
     {
         scroll = Mathf.Clamp(Input.mouseScrollDelta.y, -1, 1);
         float zoom = Camera.main.orthographicSize + scroll * zoomSpeed;
-        Camera.main.orthographicSize = Mathf.Clamp(zoom, 1, 10);
+        Camera.main.orthographicSize = Mathf.Clamp(zoom, 1, 7);
     }
 
     void cameraMovement()
@@ -48,8 +48,8 @@ public class CameraControl : MonoBehaviour
         {
             deltaY = 0;
         }
-        float newX = Mathf.Clamp(deltaX + gameObject.transform.position.x, -10, 10);
-        float newY = Mathf.Clamp(deltaY + gameObject.transform.position.y, -5, 5);
+        float newX = Mathf.Clamp(deltaX + gameObject.transform.position.x, -5, 5);
+        float newY = Mathf.Clamp(deltaY + gameObject.transform.position.y, -3, 3);
         gameObject.transform.position = new Vector3(newX, newY, gameObject.transform.position.z);
     }
 
