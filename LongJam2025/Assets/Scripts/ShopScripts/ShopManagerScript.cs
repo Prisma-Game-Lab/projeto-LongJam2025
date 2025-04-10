@@ -21,7 +21,10 @@ public class ShopManagerScript : MonoBehaviour
     private float holdTime = 0f;
     private float holdThreshold = 1f;
     private bool isHolding = false;
-    private GameObject buttonRef; 
+    private GameObject buttonRef;
+
+    public GameObject[] itemList;
+    public GridManager gridManager;
 
     void Start()
     {
@@ -88,6 +91,11 @@ public class ShopManagerScript : MonoBehaviour
         isHolding = false;
     }
 
+    public GameObject IdToObject(int itemId)
+    {
+        return itemList[0];
+    }
+
     private void Buy()
     {
         if (buttonRef == null) return;
@@ -100,6 +108,7 @@ public class ShopManagerScript : MonoBehaviour
             points_spent += shopItems[2, itemId];
             shopItems[3, itemId] += 1;
             PointsTxt.text = points.ToString();
+            GridManager.instance.InitializeMovel(IdToObject(itemId));
             Debug.Log("Item " + itemId + " comprado com sucesso!");
         }
         else
@@ -118,6 +127,7 @@ public class ShopManagerScript : MonoBehaviour
         {
             shopItems[3, itemId] -= 1;
             PointsTxt.text = points.ToString();
+            
             Debug.Log("Item " + itemId + " movido  com sucesso!");
         }
         else
