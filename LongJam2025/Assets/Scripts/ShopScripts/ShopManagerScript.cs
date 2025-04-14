@@ -83,7 +83,7 @@ void addPoints(){
         int total = 0;
         for (int i=1;i<=number_of_items;i++){
             if (shopItems[2,i] > 0){
-                total += base_pc * pc_per_item*shopItems[3,i] * shopItems[2,i];
+                total += base_pc * (int)Mathf.Pow(pc_per_item,shopItems[3,i]) * shopItems[2,i];
             }
         }
         total_points += total;
