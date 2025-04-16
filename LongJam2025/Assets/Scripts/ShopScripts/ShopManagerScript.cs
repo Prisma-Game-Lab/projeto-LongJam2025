@@ -72,7 +72,6 @@ public float Points
 
             }
         }
-        // Tier 1 - 50, Tier 2 - 250, Tier 3 = 1250
         
         for (int i=0;i<3;i++){
             tiers[i] = 0;
@@ -159,18 +158,19 @@ public void addPoints(){
 
         int itemId = buttonRef.GetComponent<ButtonInfo>().ItemId;
 
-        if (Points >= shopItems[1, itemId])
+        if (Points >= shopItems[1, itemId] && shopItems[2,itemId] == 0)
         {
            Points -= shopItems[1, itemId];
-
+            if (shopItems[2,itemId] == 0){
             shopItems[2, itemId] += 1;
+            }
             
             GridManager.instance.InitializeMovel(IdToObject(itemId));
-            Debug.Log("Item " + itemId + " comprado com sucesso!");
+            
         }
         else
         {
-            Debug.Log("Você não tem pontos suficientes para comprar o item " + itemId + "!");
+            
         }
     }
 
@@ -185,11 +185,11 @@ public void addPoints(){
             shopItems[2, itemId] -= 1;
             
             
-            Debug.Log("Item " + itemId + " movido  com sucesso!");
+           
         }
         else
         {
-            Debug.Log("Você não tem esse item para mover!");
+           
         }
     }
 }

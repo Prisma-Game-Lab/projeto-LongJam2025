@@ -48,7 +48,7 @@ public void Tier2(){
     }
 }
 else{
-    print("Voce nao tem pontos para comprar os itens do Tier 2!");
+    
 }
 }
 public void Tier3(){
@@ -63,7 +63,7 @@ public void Tier3(){
     }
 }
 else{
-    print("Voce nao tem pontos para comprar os itens do Tier 3!");
+    
 }
   
 }
