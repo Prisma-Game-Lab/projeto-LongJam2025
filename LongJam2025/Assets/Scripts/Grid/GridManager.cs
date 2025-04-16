@@ -11,9 +11,16 @@ public class GridManager : MonoBehaviour
     public Tilemap mainMap;
     public Tilemap tempMap;
 
+    public TileBase[] tileTypes;
+
+    public GameObject movel;
+
     public static Dictionary<States, TileBase> tileBases = new Dictionary<States, TileBase>();
     private MovelManager temp;
     private Vector3 prevPos;
+    private BoundsInt prevArea;
+
+
     public enum States
     {
         Empty,
@@ -25,29 +32,26 @@ public class GridManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string tilepath = @"Images\Tilemap\grid_";
         tileBases.Add(States.Empty, null);
-        tileBases.Add(States.Green, Resources.Load<TileBase>(path: tilepath + "green"));
-        tileBases.Add(States.White, Resources.Load<TileBase>(path: tilepath + "white"));
-        tileBases.Add(States.Red, Resources.Load<TileBase>(path: tilepath + "red"));
+        tileBases.Add(States.Green, tileTypes[0]);
+        tileBases.Add(States.White, tileTypes[1]);
+        tileBases.Add(States.Red, tileTypes[2]);
     }
-    
+
     private void Awake()
     {
         instance = this;
     }
-    
+
     // Update is called once per frame
     void Update()
     {
-        if (temp != null) return;
+        if (Input.GetKeyDown(KeyCode.D)) { InitializeMovel(movel); }
+        if (temp == null) return;
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (EventSystem.current.IsPointerOverGameObject(0))
-            {
-                return;
-            }
+            if (EventSystem.current.IsPointerOverGameObject()) return;
 
             if (!temp.Placed)
             {
@@ -56,10 +60,23 @@ public class GridManager : MonoBehaviour
 
                 if (prevPos != cellPos)
                 {
-                    temp.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos + new Vector3(.5f,.5f,0f));
+                    temp.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos + new Vector3(0, 0, 0));
                     prevPos = cellPos;
+                    FollowBuilding();
                 }
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (temp.CanBePlaced())
+            {
+                temp.Place();
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ClearArea();
+            Destroy(temp.gameObject);
         }
     }
 
@@ -99,5 +116,60 @@ public class GridManager : MonoBehaviour
     public void InitializeMovel(GameObject movel)
     {
         temp = Instantiate(movel, Vector3.zero, Quaternion.identity).GetComponent<MovelManager>();
+        FollowBuilding();
+    }
+
+    private void ClearArea()
+    {
+        TileBase[] toClear = new TileBase[prevArea.size.x * prevArea.size.y * prevArea.size.z];
+        FillTiles(toClear, States.Empty);
+        tempMap.SetTilesBlock(prevArea, toClear);
+    }
+
+    private void FollowBuilding()
+    {
+        ClearArea();
+        temp.area.position = gridLayout.WorldToCell(temp.gameObject.transform.position);
+        BoundsInt area = temp.area;
+
+        TileBase[] baseArray = GetTilesBlock(area, mainMap);
+
+        int size = baseArray.Length;
+        TileBase[] tileArray = new TileBase[size];
+
+        for (int i = 0; i < baseArray.Length; i++)
+        {
+            if (baseArray[i] == tileBases[States.White])
+            {
+                tileArray[i] = tileBases[States.Green];
+            }
+            else
+            {
+                FillTiles(tileArray, States.Red);
+                break;
+            }
+        }
+
+        tempMap.SetTilesBlock(area, tileArray);
+        prevArea = area;
+    }
+
+    public bool CanTakeArea(BoundsInt area)
+    {
+        TileBase[] baseArray = GetTilesBlock(area, mainMap);
+        foreach (var b in baseArray)
+        {
+            if (b != tileBases[States.White])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void TakeArea(BoundsInt area)
+    {
+        SetTilesBlock(area, States.Empty, tempMap);
+        SetTilesBlock(area, States.Green, mainMap);
     }
 }

@@ -34,45 +34,31 @@ public class PanelVisibility : MonoBehaviour
 
         }
 
-    }
 
-    public void Tier2()
-    {
-        if (ShopManager.GetComponent<ShopManagerScript>().points_spent >= 250)
-        {
-            if (b == false)
-            {
-                b = !b;
-                a = false;
-                c = false;
-                panelA.SetActive(a);
-                panelB.SetActive(b);
-                panelC.SetActive(c);
-            }
-        }
-        else
-        {
-            print("Voce nao tem pontos para comprar os itens do Tier 2!");
-        }
+public void Tier2(){
+    if (ShopManager.GetComponent<ShopManagerScript>().total_points >= 1500){
+    if (b == false){
+        b = !b;
+        a = false;
+        c = false;
+        panelA.SetActive(a);
+        panelB.SetActive(b);
+        panelC.SetActive(c); 
     }
-    public void Tier3()
-    {
-        if (ShopManager.GetComponent<ShopManagerScript>().points_spent >= 500)
-        {
-            if (c == false)
-            {
-                c = !c;
-                a = false;
-                b = false;
-                panelA.SetActive(a);
-                panelB.SetActive(b);
-                panelC.SetActive(c);
-            }
-        }
-        else
-        {
-            print("Voce nao tem pontos para comprar os itens do Tier 3!");
-        }
+}
+else{
+    print("Voce nao tem pontos para comprar os itens do Tier 2!");
+}
+}
+public void Tier3(){
+    if (ShopManager.GetComponent<ShopManagerScript>().total_points >= 45000){
+    if (c == false){
+        c = !c;
+        a = false;
+        b = false;
+        panelA.SetActive(a);
+        panelB.SetActive(b);
+        panelC.SetActive(c); 
 
     }
 }

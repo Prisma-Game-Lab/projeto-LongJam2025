@@ -18,4 +18,27 @@ public class MovelManager : MonoBehaviour
     {
         
     }
+
+    public bool CanBePlaced()
+    {
+        Vector3Int positionInt = GridManager.instance.gridLayout.LocalToCell(transform.position);
+        BoundsInt areaTemp = area;
+        areaTemp.position = positionInt;
+
+        if (GridManager.instance.CanTakeArea(areaTemp))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void Place()
+    {
+        Vector3Int positionInt = GridManager.instance.gridLayout.LocalToCell(transform.position);
+        BoundsInt areaTemp = area;
+        areaTemp.position = positionInt;
+
+        Placed = true;
+        GridManager.instance.TakeArea(areaTemp);
+    }
 }
