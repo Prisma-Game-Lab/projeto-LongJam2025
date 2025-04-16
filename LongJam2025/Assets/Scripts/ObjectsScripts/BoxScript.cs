@@ -10,4 +10,9 @@ public class BoxScript : ObjectScript
     {
         Instantiate(item, new Vector3(Random.Range(-9, 9), Random.Range(-5, 5), 0), Quaternion.identity);
     }
+
+    public void earnPoints()
+    {
+        ShopManagerScript.points += 5 + (GameManager.tier - 1) * 10;
+    }
 }

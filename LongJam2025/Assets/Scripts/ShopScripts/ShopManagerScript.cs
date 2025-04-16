@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class ShopManagerScript : MonoBehaviour
 {
     public int[,] shopItems = new int[13, 13];
+
    public float _points;
 public float Points
 {
@@ -38,6 +39,7 @@ public float Points
     private float holdThreshold = 1f;
     private bool isHolding = false;
 
+
     public int tier1_price;
 
     public int tier2_price;
@@ -59,6 +61,7 @@ public float Points
         shopItems[1,1] = tier1_price;
         shopItems[3,1] = 1;
         for (int i = 1; i <= number_of_items; i++)
+
         {
             shopItems[0, i] = i;     // Item ID
             shopItems[2, i] = 0;
@@ -73,10 +76,11 @@ public float Points
             }
         }
         // Tier 1 - 50, Tier 2 - 250, Tier 3 = 1250
-        
-        for (int i=0;i<3;i++){
+        for (int i = 0; i < 3; i++)
+        {
             tiers[i] = 0;
         }
+        StartCoroutine(passivePoints());
     }
 
 public void addPoints(){
@@ -93,6 +97,7 @@ public void addPoints(){
 
     void Update()
     {
+
         time += Time.deltaTime;
 
         if (time >= 1.0) {
@@ -106,19 +111,23 @@ public void addPoints(){
             if(total_points>= 1500){
                 tiers[1] = 1;
                 if(total_points >= 45000){
+
                     tiers[2] = 1;
-        }  
-        }
+                    if (GameManager.tier == 3)
+                    {
+                        GameManager.tier += 1;
+                    }
+                }
+            }
         }
 
-        
         if (isHolding)
         {
             holdTime += Time.deltaTime;
             if (holdTime >= holdThreshold)
             {
-                if(isVisible == true)
-                MoveItem(); 
+                if (isVisible == true)
+                    MoveItem();
                 isHolding = false;
             }
         }
@@ -130,11 +139,11 @@ public void addPoints(){
         isHolding = true;
         holdTime = 0f;
 
-        
+
         ScrollRect scrollRect = button.GetComponentInParent<ScrollRect>();
         if (scrollRect != null)
         {
-            
+
         }
     }
 
@@ -143,7 +152,7 @@ public void addPoints(){
         if (holdTime < holdThreshold)
         {
             if (isVisible == true)
-            Buy(); 
+                Buy();
         }
         isHolding = false;
     }
@@ -161,11 +170,13 @@ public void addPoints(){
 
         if (Points >= shopItems[1, itemId])
         {
+
            Points -= shopItems[1, itemId];
 
             shopItems[2, itemId] += 1;
             
             GridManager.instance.InitializeMovel(IdToObject(itemId));
+
             Debug.Log("Item " + itemId + " comprado com sucesso!");
         }
         else
@@ -190,6 +201,15 @@ public void addPoints(){
         else
         {
             Debug.Log("Você não tem esse item para mover!");
+        }
+    }
+
+    IEnumerator passivePoints()
+    {
+        while (true)
+        {
+            points += (5 * (itemCount * GameManager.tier));
+            yield return new WaitForSeconds(1);
         }
     }
 }
