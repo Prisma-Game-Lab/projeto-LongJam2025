@@ -8,6 +8,8 @@ public GameObject panelA;
    public GameObject panelB;
     public GameObject panelC;
 
+public GameObject button2;
+public GameObject button3;
     public bool a = true;
     public bool b = false;
     public bool c = false;
@@ -65,4 +67,13 @@ else{
 }
   
 }
+    public void Update()
+    {
+       if (ShopManager.GetComponent<ShopManagerScript>().total_points >= 1500){
+        button2.SetActive(false);
+       }
+       if (ShopManager.GetComponent<ShopManagerScript>().total_points >= 45000){
+        button3.SetActive(false);
+       }
+    }
 }
