@@ -79,7 +79,7 @@ public float Points
         }
     }
 
-void addPoints(){
+public void addPoints(){
         int total = 0;
         for (int i=1;i<=number_of_items;i++){
             if (shopItems[2,i] > 0){
