@@ -102,10 +102,13 @@ public void addPoints(){
 
         if(total_points >= 50){
             tiers[0] = 1;
-            if(total_points>= 1500){
+            GameManager.tier = 1;
+            if (total_points>= 1500){
                 tiers[1] = 1;
-                if(total_points >= 45000){
+                GameManager.tier =2;
+                if (total_points >= 45000){
                     tiers[2] = 1;
+                    GameManager.tier = 3;
         }  
         }
         }
