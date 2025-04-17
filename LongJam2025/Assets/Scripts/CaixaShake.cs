@@ -12,10 +12,15 @@ public class CaixaShake : MonoBehaviour
     {
            animator = this.GetComponent<Animator>();
     }
+    public void earnPoints()
+    {
+        shop._points += 5 + GameManager.tier * 10;
+        shop.total_points += 5 + GameManager.tier * 10;
+    }
 
     public void OnMouseDown()
     {
         animator.SetTrigger("Click");
-        shop.addPoints();
+        earnPoints();
     }
 }

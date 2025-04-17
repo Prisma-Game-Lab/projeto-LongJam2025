@@ -49,7 +49,7 @@ public float Points
     private GameObject buttonRef;
 
     public GameObject[] itemList;
-    public GridManager gridManager;
+   // public GridManager gridManager;
 
     void Start()
     {
@@ -93,21 +93,22 @@ public void addPoints(){
     {
         time += Time.deltaTime;
 
-        if (time >= 1.0) {
+        if (time >= 1.0f) {
             addPoints();
             time = 0.0f;
             
         }
+        PointsTxt.text = _points.ToString();
 
         if(total_points >= 50){
             tiers[0] = 1;
-            GameManager.tier = 1;
+          //  GameManager.tier = 1;
             if (total_points>= 1500){
                 tiers[1] = 1;
-                GameManager.tier =2;
+             //   GameManager.tier =2;
                 if (total_points >= 45000){
                     tiers[2] = 1;
-                    GameManager.tier = 3;
+                //    GameManager.tier = 3;
         }  
         }
         }
@@ -167,7 +168,7 @@ public void addPoints(){
             shopItems[2, itemId] += 1;
             }
             
-            GridManager.instance.InitializeMovel(IdToObject(itemId));
+           // GridManager.instance.InitializeMovel(IdToObject(itemId));
             
         }
         else
