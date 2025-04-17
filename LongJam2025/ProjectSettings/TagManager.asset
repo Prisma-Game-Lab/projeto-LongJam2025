@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Event
   layers:
   - Default
   - TransparentFX
@@ -40,6 +41,9 @@ TagManager:
   m_SortingLayers:
   - name: Background
     uniqueID: 2991725225
+    locked: 0
+  - name: Moveis
+    uniqueID: 3852429223
     locked: 0
   - name: Default
     uniqueID: 0
