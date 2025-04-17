@@ -9,8 +9,8 @@ using UnityEngine.UI;
 public class ShopManagerScript : MonoBehaviour
 {
     public int[,] shopItems = new int[5, 16];
-   public float _points;
-public float Points
+    public float _points;
+    public float Points
 {
     get => _points;
     set
@@ -78,7 +78,7 @@ public float Points
         }
     }
 
-public void addPoints(){
+    public void addPoints(){
         int total = 0;
         for (int i=1;i<=number_of_items;i++){
             if (shopItems[2,i] > 0){

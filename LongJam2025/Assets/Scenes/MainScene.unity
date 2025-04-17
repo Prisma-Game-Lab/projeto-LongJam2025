@@ -4506,7 +4506,7 @@ MonoBehaviour:
   time: 0
   tier1_price: 25
   tier2_price: 225
-  base_pc: 0
+  base_pc: 1
   pc_per_item: 5
   tier3_price: 1250
   itemList:
@@ -13249,9 +13249,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 974865998501982207, guid: 1df10e4e27165094eaf2f6c85752c8d6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 974865998501982207, guid: 1df10e4e27165094eaf2f6c85752c8d6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.66
+      objectReference: {fileID: 0}
     - target: {fileID: 3429126905625622192, guid: 1df10e4e27165094eaf2f6c85752c8d6, type: 3}
       propertyPath: m_Name
       value: Sala
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929182344593345983, guid: 1df10e4e27165094eaf2f6c85752c8d6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263776266211522756, guid: 1df10e4e27165094eaf2f6c85752c8d6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263776266211522756, guid: 1df10e4e27165094eaf2f6c85752c8d6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263776266211522756, guid: 1df10e4e27165094eaf2f6c85752c8d6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
