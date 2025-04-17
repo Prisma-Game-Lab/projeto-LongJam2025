@@ -27,6 +27,13 @@ public class CameraControl : MonoBehaviour
         if (!shop.isVisible)
         {
             cameraMovement();
+        }
+    }
+
+    private void Update()
+    {
+        if (!shop.isVisible)
+        {
             cameraZoom();
         }
     }
