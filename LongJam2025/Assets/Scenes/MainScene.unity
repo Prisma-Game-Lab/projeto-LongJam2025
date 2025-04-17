@@ -245,8 +245,8 @@ MonoBehaviour:
   panelA: {fileID: 1403407218}
   panelB: {fileID: 620389753}
   panelC: {fileID: 1355498184}
-  button2: {fileID: 77349318}
-  button3: {fileID: 428773951}
+  button2: {fileID: 966651255}
+  button3: {fileID: 1934257958}
   a: 1
   b: 0
   c: 0
@@ -880,7 +880,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3448778}
         m_TargetAssemblyTypeName: PanelVisibility, Assembly-CSharp
         m_MethodName: Tier2
         m_Mode: 1
@@ -1034,7 +1034,7 @@ MonoBehaviour:
   ItemId: 4
   PriceText: {fileID: 327084789}
   QuantityText: {fileID: 2097390362}
-  ShopManager: {fileID: 0}
+  ShopManager: {fileID: 592116303}
 --- !u!114 &84112747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3420,7 +3420,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3448778}
         m_TargetAssemblyTypeName: PanelVisibility, Assembly-CSharp
         m_MethodName: Tier3
         m_Mode: 1
@@ -4498,9 +4498,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5de1edf97c2cde4c9f5f55eef76a670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _points: 0
+  _points: 45000
   isVisible: 0
-  total_points: 0
+  total_points: 45000
   tiers: 000000000000000000000000
   PointsTxt: {fileID: 263402372}
   time: 0
@@ -5019,7 +5019,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3448778}
         m_TargetAssemblyTypeName: PanelVisibility, Assembly-CSharp
         m_MethodName: Tier1
         m_Mode: 1
