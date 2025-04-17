@@ -2102,6 +2102,31 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7803378041513020863, guid: 26a1d5dc1fc28034d901f595baa4ae89, type: 3}
   m_PrefabInstance: {fileID: 1225323392}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &889245905 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2052088392727391495, guid: bbe69ca87c8be9c4a94a62ed0e1a37ed, type: 3}
+  m_PrefabInstance: {fileID: 1545324363}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &889245909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889245905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
 --- !u!1 &902031362
 GameObject:
   m_ObjectHideFlags: 0
@@ -2620,74 +2645,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 980527280}
   m_CullTransparentMesh: 1
---- !u!1 &991828579
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 991828582}
-  - component: {fileID: 991828581}
-  - component: {fileID: 991828580}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &991828580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 991828579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &991828581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 991828579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &991828582
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 991828579}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &992919083
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4655,11 +4612,13 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 28259ba065c5f9a4eb1db5dddd106c2f, type: 3}
-    m_RemovedComponents:
-    - {fileID: 2572603714969090693, guid: bbe69ca87c8be9c4a94a62ed0e1a37ed, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2052088392727391495, guid: bbe69ca87c8be9c4a94a62ed0e1a37ed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 889245909}
   m_SourcePrefab: {fileID: 100100000, guid: bbe69ca87c8be9c4a94a62ed0e1a37ed, type: 3}
 --- !u!82 &1545324364 stripped
 AudioSource:
@@ -7181,6 +7140,5 @@ SceneRoots:
   m_Roots:
   - {fileID: 2009178893}
   - {fileID: 98418359}
-  - {fileID: 991828582}
   - {fileID: 1545324363}
   - {fileID: 1325210191}
