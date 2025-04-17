@@ -93,7 +93,7 @@ public void addPoints(){
     {
         time += Time.deltaTime;
 
-        if (time >= 1.0) {
+        if (time >= 1.0f) {
             addPoints();
             time = 0.0f;
             
