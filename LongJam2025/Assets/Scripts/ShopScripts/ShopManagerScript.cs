@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class ShopManagerScript : MonoBehaviour
 {
-    public int[,] shopItems = new int[4, 16];
+    public int[,] shopItems = new int[5, 16];
    public float _points;
 public float Points
 {
@@ -61,6 +61,7 @@ public float Points
         {
             shopItems[0, i] = i;     // Item ID
             shopItems[2, i] = 0;
+            shopItems[4,i] = 0;
             if (i <= 9 && i>1){
             shopItems[1,i] = tier2_price;
             shopItems[3,i] = 2;
@@ -81,7 +82,7 @@ public void addPoints(){
         int total = 0;
         for (int i=1;i<=number_of_items;i++){
             if (shopItems[2,i] > 0){
-                total += base_pc * (int)Mathf.Pow(pc_per_item,shopItems[3,i]) * shopItems[2,i];
+                total += base_pc * (int)Mathf.Pow(pc_per_item,shopItems[3,i]);
             }
         }
         total_points += total;
@@ -102,13 +103,13 @@ public void addPoints(){
 
         if(total_points >= 50){
             tiers[0] = 1;
-          //  GameManager.tier = 1;
+            GameManager.tier = 1;
             if (total_points>= 1500){
                 tiers[1] = 1;
-             //   GameManager.tier =2;
+               GameManager.tier = 2;
                 if (total_points >= 45000){
                     tiers[2] = 1;
-                //    GameManager.tier = 3;
+                   GameManager.tier = 3;
         }  
         }
         }
@@ -160,7 +161,7 @@ public void addPoints(){
         if (buttonRef == null) return;
 
         int itemId = buttonRef.GetComponent<ButtonInfo>().ItemId;
-
+        shopItems[4,itemId] = 1;
         if (Points >= shopItems[1, itemId] && shopItems[2,itemId] == 0)
         {
            Points -= shopItems[1, itemId];
@@ -182,10 +183,12 @@ public void addPoints(){
         if (buttonRef == null) return;
 
         int itemId = buttonRef.GetComponent<ButtonInfo>().ItemId;
+         shopItems[4,itemId] = 0;
 
         if (shopItems[2, itemId] > 0)
         {
-            shopItems[2, itemId] -= 1;
+           
+            //shopItems[2, itemId] -= 1;
             
             
            
