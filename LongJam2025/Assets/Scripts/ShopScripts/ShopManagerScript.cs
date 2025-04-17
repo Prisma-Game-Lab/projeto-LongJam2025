@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class ShopManagerScript : MonoBehaviour
 {
-    public int[,] shopItems = new int[13, 13];
+    public int[,] shopItems = new int[4, 16];
    public float _points;
 public float Points
 {
@@ -16,7 +16,6 @@ public float Points
     set
     {
         _points = value;
-        Debug.Log("Setting points to: " + _points);
         if (PointsTxt != null)
         {
             PointsTxt.text = _points.ToString();
@@ -46,7 +45,7 @@ public float Points
 
     public int pc_per_item;
     public int tier3_price;
-    private int number_of_items = 8;
+    private int number_of_items = 15;
     private GameObject buttonRef;
 
     public GameObject[] itemList;
@@ -62,11 +61,11 @@ public float Points
         {
             shopItems[0, i] = i;     // Item ID
             shopItems[2, i] = 0;
-            if (i <= 4 && i>1){
+            if (i <= 9 && i>1){
             shopItems[1,i] = tier2_price;
             shopItems[3,i] = 2;
             }
-            if (i > 4){
+            if (i > 9){
             shopItems[1,i] = tier3_price;
             shopItems[3,i] = 3;
 
