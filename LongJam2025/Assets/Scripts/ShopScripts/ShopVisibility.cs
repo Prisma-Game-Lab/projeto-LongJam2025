@@ -20,7 +20,7 @@ public class Shop : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(1)){
        shop.enabled = !shop.enabled;
-       ShopManager.GetComponent<ShopManagerScript>().isVisible = true;
+       ShopManager.GetComponent<ShopManagerScript>().isVisible = !ShopManager.GetComponent<ShopManagerScript>().isVisible;
         }
         
     }
