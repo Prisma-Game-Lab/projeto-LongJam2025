@@ -14,6 +14,7 @@ public class CaixaShake : MonoBehaviour
     }
     public void earnPoints()
     {
+        AudioManager.Instance.PlaySFX("box");
         shop._points += 5 + GameManager.tier * 10;
         shop.total_points += 5 + GameManager.tier * 10;
     }
