@@ -9,7 +9,14 @@ public class MenuScript : MonoBehaviour
 
     public void StartGame()
     {
-        AudioManager.Instance.PlayMusic("game");
+        if (scene == "MainScene")
+        {
+            AudioManager.Instance.PlayMusic("menu");
+        }
+        else
+        {
+            AudioManager.Instance.PlayMusic("game");
+        }
         SceneManager.LoadScene(scene);
     }
 

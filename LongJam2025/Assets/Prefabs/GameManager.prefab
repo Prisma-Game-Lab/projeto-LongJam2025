@@ -46,8 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35532dbaa115f8448919823eb3d5f3af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSounds: []
-  sfxSounds: []
+  musicSounds:
+  - {fileID: 8300000, guid: bea061b75b1229345b3ffca4fd5d885d, type: 3}
+  - {fileID: 8300000, guid: 28259ba065c5f9a4eb1db5dddd106c2f, type: 3}
+  sfxSounds:
+  - {fileID: 8300000, guid: 610c6d67bb5594d4383b140513076002, type: 3}
+  - {fileID: 8300000, guid: 99ff880a08104ea4fbc378d5d098ac99, type: 3}
+  - {fileID: 8300000, guid: 46747c0868994b94fa85ad8561dd9367, type: 3}
   musicSource: {fileID: 8056544692710775596}
   sfxSource: {fileID: 490528346926488303}
 --- !u!1 &2052088392727391495
