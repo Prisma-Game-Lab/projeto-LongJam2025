@@ -161,9 +161,10 @@ public class ShopManagerScript : MonoBehaviour
         if (buttonRef == null) return;
 
         int itemId = buttonRef.GetComponent<ButtonInfo>().ItemId;
-        shopItems[4,itemId] = 1;
+        
         if (Points >= shopItems[1, itemId] && shopItems[2,itemId] == 0)
         {
+            shopItems[4,itemId] = 1;
             AudioManager.Instance.PlaySFX("buy");
            Points -= shopItems[1, itemId];
             if (shopItems[2,itemId] == 0){
