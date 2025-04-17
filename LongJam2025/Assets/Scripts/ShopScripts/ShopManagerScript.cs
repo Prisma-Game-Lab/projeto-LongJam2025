@@ -164,6 +164,7 @@ public class ShopManagerScript : MonoBehaviour
         shopItems[4,itemId] = 1;
         if (Points >= shopItems[1, itemId] && shopItems[2,itemId] == 0)
         {
+            AudioManager.Instance.PlaySFX("buy");
            Points -= shopItems[1, itemId];
             if (shopItems[2,itemId] == 0){
             shopItems[2, itemId] += 1;

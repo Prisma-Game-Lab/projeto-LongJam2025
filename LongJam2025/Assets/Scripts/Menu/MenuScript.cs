@@ -8,7 +8,7 @@ public class MenuScript : MonoBehaviour
     public void StartGame()
     {
         AudioManager.Instance.PlayMusic("game");
-        SceneManager.LoadScene("TestScene");
+        SceneManager.LoadScene("MainScene");
     }
 
     public void QuitGame()
