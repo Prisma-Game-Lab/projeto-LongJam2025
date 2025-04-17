@@ -53,6 +53,7 @@ public class ShopManagerScript : MonoBehaviour
 
     void Start()
     {
+        GameManager.tier = 0;
         Points = Points;
        
         shopItems[1,1] = tier1_price;
