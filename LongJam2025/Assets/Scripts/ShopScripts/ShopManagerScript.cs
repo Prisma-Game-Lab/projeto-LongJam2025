@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class ShopManagerScript : MonoBehaviour
 {
+    [SerializeField] private GameObject endButton;
     public int[,] shopItems = new int[5, 16];
     public float _points;
     public float Points
@@ -111,6 +112,10 @@ public class ShopManagerScript : MonoBehaviour
                 if (total_points >= 45000){
                     tiers[2] = 1;
                    GameManager.tier = 3;
+                    if (total_points >= 100000)
+                    {
+                        endButton.SetActive(true);
+                    }
         }  
         }
         }
